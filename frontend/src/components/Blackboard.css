@@ -1,0 +1,378 @@
+/* 黑板容器 */
+.blackboard-container {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  border-left: 3px solid #1a252f;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 黑板头部 */
+.blackboard-header {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #1a252f;
+}
+
+.blackboard-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.blackboard-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.control-btn.active {
+  background: #3498db;
+  border-color: #3498db;
+}
+
+/* 黑板内容区 */
+.blackboard-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* 数学内容区域 */
+.current-content-area {
+  margin-bottom: 20px;
+  min-height: 200px;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.empty-state p {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #95a5a6;
+}
+
+.empty-state small {
+  font-size: 12px;
+  color: #7f8c8d;
+  opacity: 0.8;
+}
+
+/* 黑板装饰效果 */
+.blackboard-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.chalk-dust {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.chalk-dust-1 {
+  width: 4px;
+  height: 4px;
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.chalk-dust-2 {
+  width: 3px;
+  height: 3px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 2s;
+}
+
+.chalk-dust-3 {
+  width: 5px;
+  height: 5px;
+  top: 40%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.3;
+  }
+}
+
+.math-content-area {
+  margin-bottom: 20px;
+  min-height: 100px;
+}
+
+.math-item {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #3498db;
+  animation: fadeInUp 0.5s ease;
+}
+
+.math-formula {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 4px;
+  text-align: center;
+  border-left-color: #e74c3c;
+}
+
+.math-step {
+  display: flex;
+  align-items: flex-start;
+  color: #ecf0f1;
+  font-size: 14px;
+  line-height: 1.4;
+  border-left-color: #2ecc71;
+}
+
+.step-number {
+  background: #2ecc71;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.math-keyword {
+  color: #f39c12;
+  font-weight: bold;
+  font-size: 15px;
+  border-left-color: #f39c12;
+  background: rgba(243, 156, 18, 0.1);
+}
+
+/* 绘图区域 */
+.drawing-area {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blackboard-canvas {
+  background: #2c3e50;
+  border: 2px solid #1a252f;
+  border-radius: 8px;
+  cursor: crosshair;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+  touch-action: none;
+}
+
+.blackboard-canvas:active {
+  cursor: pointer;
+}
+
+/* 历史内容 */
+.history-content {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-content h4 {
+  margin: 0 0 12px 0;
+  color: #bdc3c7;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.history-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  font-size: 12px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: #95a5a6;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.history-item:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.history-formula {
+  font-family: 'Courier New', monospace;
+  color: #e74c3c;
+}
+
+.history-step {
+  color: #2ecc71;
+}
+
+.history-keyword {
+  color: #f39c12;
+}
+
+/* 黑板底部 */
+.blackboard-footer {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 20px;
+  border-top: 1px solid #1a252f;
+}
+
+.status-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 粉笔效果 */
+.chalk-effect {
+  position: relative;
+}
+
+.chalk-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" /><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.1"/></svg>');
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .blackboard-container {
+    border-left: none;
+    border-top: 3px solid #1a252f;
+  }
+
+  .blackboard-header {
+    padding: 10px 15px;
+  }
+
+  .blackboard-header h3 {
+    font-size: 14px;
+  }
+
+  .control-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .blackboard-content {
+    padding: 15px;
+  }
+
+  .blackboard-canvas {
+    width: 100%;
+    height: 200px;
+  }
+
+  .math-item {
+    padding: 6px 10px;
+  }
+
+  .math-formula {
+    font-size: 14px;
+  }
+
+  .math-step {
+    font-size: 13px;
+  }
+}
+
+/* 深色主题适配 */
+@media (prefers-color-scheme: dark) {
+  .blackboard-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+
+  .blackboard-canvas {
+    background: #1a1a1a;
+  }
+}
