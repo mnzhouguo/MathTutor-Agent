@@ -11,7 +11,6 @@ from services.analysis_converter import MarkdownToJSONConverter
 from models.analysis_models import AnalysisResponse
 
 
-
 class DefaultMessage:
     """自定义消息格式，对OpenAI message进行简单封装"""
 
@@ -233,7 +232,6 @@ class SimpleChatService:
    - **解题方案**：提供清晰的解题思路与步骤，包括关键推理环节、可能用到的转化策略或辅助线作法等，**不给出具体数值结果或最终答案**。
 
 3. **解题建议**：总结解题过程中应注意的事项与策略，帮助学生提升解题能力。
-
 
 请严格按照以下格式输出：
 

@@ -1,0 +1,110 @@
+{
+    "folders": [
+        {
+            "name": "MathTutor Java Backend",
+            "path": "."
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "java",
+                "name": "🚀 Launch MathTutorApplication",
+                "request": "launch",
+                "mainClass": "com.mathtutor.MathTutorApplication",
+                "projectName": "math-tutor-backend",
+                "env": {
+                    "DEEPSEEK_API_KEY": "sk-c22b4a521f63464fa56bfa359dc7842b"
+                },
+                "vmArgs": "-Xmx1g -Xms512m",
+                "args": [],
+                "console": "integratedTerminal"
+            },
+            {
+                "type": "java",
+                "name": "🐛 Debug MathTutorApplication",
+                "request": "launch",
+                "mainClass": "com.mathtutor.MathTutorApplication",
+                "projectName": "math-tutor-backend",
+                "env": {
+                    "DEEPSEEK_API_KEY": "sk-c22b4a521f63464fa56bfa359dc7842b"
+                },
+                "vmArgs": "-Xmx1g -Xms512m -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005",
+                "args": [],
+                "console": "integratedTerminal"
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "🏗️ Maven: Compile",
+                "type": "shell",
+                "command": "mvn",
+                "args": ["clean", "compile"],
+                "group": "build",
+                "presentation": {
+                    "reveal": "always",
+                    "panel": "new"
+                }
+            },
+            {
+                "label": "🏃 Maven: Spring Boot Run",
+                "type": "shell",
+                "command": "mvn",
+                "args": ["spring-boot:run"],
+                "group": "build",
+                "presentation": {
+                    "reveal": "always",
+                    "panel": "dedicated",
+                    "focus": true
+                },
+                "env": {
+                    "DEEPSEEK_API_KEY": "sk-c22b4a521f63464fa56bfa359dc7842b"
+                },
+                "isBackground": true,
+                "problemMatcher": []
+            },
+            {
+                "label": "📦 Maven: Package",
+                "type": "shell",
+                "command": "mvn",
+                "args": ["clean", "package", "-DskipTests"],
+                "group": "build",
+                "presentation": {
+                    "reveal": "always",
+                    "panel": "new"
+                }
+            }
+        ]
+    },
+    "settings": {
+        "java.home": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.17.10-hotspot",
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.compile.nullAnalysis.mode": "automatic",
+        "java.debug.settings.onBuildFailureProceed": true,
+        "java.server.launchMode": "Standard",
+        "java.import.maven.enabled": true,
+        "java.maven.downloadSources": true,
+        "terminal.integrated.env.windows": {
+            "DEEPSEEK_API_KEY": "sk-c22b4a521f63464fa56bfa359dc7842b"
+        },
+        "files.exclude": {
+            "**/target": true,
+            "**/.classpath": true,
+            "**/.project": true,
+            "**/.settings": true
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-java.java-pack",
+            "vmware.vscode-spring-boot",
+            "vmware.vscode-spring-boot-pack",
+            "redhat.vscode-xml",
+            "ms-vscode.vscode-json"
+        ]
+    }
+}

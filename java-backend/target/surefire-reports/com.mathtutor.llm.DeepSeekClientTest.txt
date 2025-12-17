@@ -1,0 +1,34 @@
+-------------------------------------------------------------------------------
+Test set: com.mathtutor.llm.DeepSeekClientTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 85.69 s <<< FAILURE! -- in com.mathtutor.llm.DeepSeekClientTest
+com.mathtutor.llm.DeepSeekClientTest.testAsyncChat -- Time elapsed: 0.032 s <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:27)
+  2. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:28)
+  3. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:29)
+  4. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:30)
+  5. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:31)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+	at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:192)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.mathtutor.llm.DeepSeekClientTest.testHealthCheck -- Time elapsed: 0.250 s <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:29)
+  2. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:30)
+  3. -> at com.mathtutor.llm.DeepSeekClientTest.setUp(DeepSeekClientTest.java:31)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+	at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:192)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
