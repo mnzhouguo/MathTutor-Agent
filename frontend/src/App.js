@@ -9,6 +9,7 @@ import ChatContainer from './components/ChatContainer';
 import MessageInput from './components/MessageInput';
 import Header from './components/Header';
 import Blackboard from './components/BlackboardSimple';
+import MathExperimentContainer from './components/MathExperimentContainer';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [useAgent, setUseAgent] = useState(true); // 默认启用数学私教Agent
   const [sessionId, setSessionId] = useState(null);
   const [agentInfo, setAgentInfo] = useState(null);
+  const [currentView, setCurrentView] = useState('chat'); // 'chat' 或 'experiment'
   const messagesEndRef = useRef(null);
 
   // 滚动到底部
@@ -184,33 +186,59 @@ function App() {
           onGetSummary={handleGetSessionSummary}
           sessionId={sessionId}
         />
+
+        {/* 导航菜单 */}
+        <div className="nav-menu">
+          <button
+            className={`nav-btn ${currentView === 'chat' ? 'active' : ''}`}
+            onClick={() => setCurrentView('chat')}
+          >
+            💬 智能对话
+          </button>
+          <button
+            className={`nav-btn ${currentView === 'experiment' ? 'active' : ''}`}
+            onClick={() => setCurrentView('experiment')}
+          >
+            🧪 数学实验
+          </button>
+        </div>
       </div>
 
-      {/* 主要内容区：左右布局 */}
-      <div className="main-content">
-        {/* 左侧：对话框 */}
-        <div className="chat-section">
-          <ChatContainer
-            messages={messages}
-            loading={loading}
-            messagesEndRef={messagesEndRef}
-            onRetry={handleRetry}
-          />
+      {/* 主要内容区 */}
+      <div className={`main-content ${currentView === 'chat' ? 'chat-view' : 'experiment-view'}`}>
+        {currentView === 'chat' ? (
+          // 对话界面：左右布局
+          <>
+            {/* 左侧：对话框 */}
+            <div className="chat-section">
+              <ChatContainer
+                messages={messages}
+                loading={loading}
+                messagesEndRef={messagesEndRef}
+                onRetry={handleRetry}
+              />
 
-          <MessageInput
-            onSendMessage={handleSendMessage}
-            disabled={loading}
-            placeholder={useAgent ? "请输入数学问题，让小老师引导你思考..." : "请输入您的数学问题..."}
-          />
-        </div>
+              <MessageInput
+                onSendMessage={handleSendMessage}
+                disabled={loading}
+                placeholder={useAgent ? "请输入数学问题，让小老师引导你思考..." : "请输入您的数学问题..."}
+              />
+            </div>
 
-        {/* 右侧：黑板 */}
-        <div className="blackboard-section">
-          <Blackboard
-            agentMessages={messages.filter(msg => msg.role === 'assistant')}
-            currentMessage={messages[messages.length - 1]}
-          />
-        </div>
+            {/* 右侧：黑板 */}
+            <div className="blackboard-section">
+              <Blackboard
+                agentMessages={messages.filter(msg => msg.role === 'assistant')}
+                currentMessage={messages[messages.length - 1]}
+              />
+            </div>
+          </>
+        ) : (
+          // 实验界面：全屏
+          <div className="experiment-section">
+            <MathExperimentContainer />
+          </div>
+        )}
       </div>
 
       {/* 错误提示 */}

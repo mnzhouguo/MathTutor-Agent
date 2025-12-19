@@ -1,0 +1,223 @@
+.experiment-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 加载状态 */
+.experiment-container.loading {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误状态 */
+.experiment-container.error {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.error-icon {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.experiment-container.error h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.8em;
+}
+
+.experiment-container.error p {
+  margin: 0 0 20px 0;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 头部 */
+.experiment-header {
+  text-align: center;
+  color: white;
+  padding: 30px 0;
+}
+
+.experiment-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5em;
+  font-weight: 300;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.experiment-header p {
+  margin: 0;
+  font-size: 1.2em;
+  opacity: 0.9;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 主要内容区域 */
+.experiment-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 底部信息 */
+.experiment-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  color: white;
+}
+
+@media (max-width: 968px) {
+  .experiment-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.experiment-info h3,
+.learning-objectives h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+.experiment-info ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.experiment-info li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.experiment-info li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+/* 学习目标卡片 */
+.objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.objective-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.objective-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.objective-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.objective-card p {
+  margin: 0;
+  font-size: 0.9em;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .experiment-container {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .experiment-header {
+    padding: 20px 0;
+  }
+
+  .experiment-header h1 {
+    font-size: 2em;
+  }
+
+  .experiment-header p {
+    font-size: 1em;
+  }
+
+  .objectives-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .objective-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experiment-header h1 {
+    font-size: 1.8em;
+  }
+
+  .experiment-info li {
+    font-size: 0.95em;
+  }
+
+  .objective-card h4 {
+    font-size: 1em;
+  }
+
+  .objective-card p {
+    font-size: 0.85em;
+  }
+}
